@@ -1,0 +1,32 @@
+{
+  "name": "restapi-typescript-decorators-example",
+  "version": "1.0.0",
+  "description": "Example repo that uses the restapi-typescript-decorators",
+  "main": "build/index",
+  "scripts": {
+    "format": "./node_modules/.bin/prettier --write index.ts",
+    "test": "npx ts-node test.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/synle/restapi-typescript-decorators-example.git"
+  },
+  "keywords": [
+    "restapi",
+    "fetch",
+    "decorator",
+    "annotation"
+  ],
+  "author": "Sy Le",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/synle/restapi-typescript-decorators-example/issues"
+  },
+  "homepage": "https://github.com/synle/restapi-typescript-decorators-example#readme",
+  "dependencies": {
+    "typescript": "^3.8.3",
+    "restapi-typescript-decorators": "^1.0.4"
+  },
+  "devDependencies": {},
+  "peerDependencies": {}
+}
