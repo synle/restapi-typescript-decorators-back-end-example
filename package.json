@@ -1,10 +1,11 @@
 {
   "name": "restapi-typescript-decorators-example",
-  "version": "1.0.0",
+  "version": "2.0.1",
   "description": "Example repo that uses the restapi-typescript-decorators",
   "main": "build/index",
   "scripts": {
-    "format": "./node_modules/.bin/prettier --write index.ts",
+    "build": "rm -rf build/* && ./node_modules/.bin/tsc",
+    "format": "./node_modules/.bin/prettier --config ./.prettierrc --write **/**/**/**/*.{ts,tsx,js,jsx,scss} *.{json,MD}",
     "test": "npx ts-node test.ts"
   },
   "repository": {
@@ -24,9 +25,11 @@
   },
   "homepage": "https://github.com/synle/restapi-typescript-decorators-example#readme",
   "dependencies": {
-    "typescript": "^3.8.3",
-    "restapi-typescript-decorators": "^1.0.4"
+    "restapi-typescript-decorators": "^2.1.2",
+    "typescript": "^3.8.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "1.19.1"
+  },
   "peerDependencies": {}
 }
