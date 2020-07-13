@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/synle/restapi-typescript-decorators-example#readme",
   "dependencies": {
-    "restapi-typescript-decorators": "^2.1.2",
+    "restapi-typescript-decorators": "^2",
     "typescript": "^3.8.3"
   },
   "devDependencies": {
