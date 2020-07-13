@@ -1,5 +1,7 @@
-# restapi-typescript-decorators-example
-Sample code that uses and tests the decorator code in restapi-typescript-decorators (https://github.com/synle/restapi-typescript-decorators)
+![Build and Test CI](https://github.com/synle/restapi-typescript-decorators-example/workflows/Build%20and%20Test%20CI/badge.svg)
+
+# restapi-typescript-decorators-back-end-example
+Sample code that uses and tests the decorator code in restapi-typescript-decorators (https://github.com/synle/restapi-typescript-decorators). This Repo is showing how the decorators can be used in a NodeJS environment / setup.
 
 ## to install the lib from npm
 ```
