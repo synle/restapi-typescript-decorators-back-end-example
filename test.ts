@@ -8,15 +8,7 @@ import {
   ApiResponse,
 } from 'restapi-typescript-decorators';
 
-export interface HttpBinResponse {
-  args?: object;
-  headers?: object;
-  origin?: string;
-  url?: string;
-  data?: object;
-  json?: string | object;
-  form?: object;
-}
+import { HttpBinResponse, HttpBinRequest } from './types';
 
 @RestClient({
   baseUrl: 'https://httpbin.org',
@@ -25,15 +17,15 @@ export class PublicApiDataStore {
   @RestApi('/post', {
     method: 'POST',
   })
-  doSimpleHttpBinPost(@RequestBody _body: any): ApiResponse<HttpBinResponse> {}
+  doSimpleHttpBinPost(@RequestBody _body: HttpBinRequest): ApiResponse<HttpBinResponse> {}
 
   @RestApi('/get')
-  doSimpleHttpBinGet(@QueryParams _queryParam: any): ApiResponse<HttpBinResponse> {}
+  doSimpleHttpBinGet(@QueryParams _queryParam: HttpBinRequest): ApiResponse<HttpBinResponse> {}
 
   @RestApi('/anything/{messageId}')
   doSimpleHttpBinPathParamsGet(
     @PathParam('messageId') _targetMessageId: string,
-    @QueryParams _queryParams: any,
+    @QueryParams _queryParams: HttpBinRequest,
   ): ApiResponse<HttpBinResponse> {}
 }
 
@@ -90,7 +82,7 @@ const myPrivateBasicAuthApiDataStoreInstance = new PrivateBasicAuthApiDataStore(
 );
 
 // begin api calls
-const myApiResponse1 = myPrivateBearerAuthApiDataStoreInstance.doApiCallWithBearerToken()
+const myApiResponse1 = myPrivateBearerAuthApiDataStoreInstance.doApiCallWithBearerToken();
 if (myApiResponse1) {
   myApiResponse1.result.then((resp: HttpBinResponse) => {
     console.log('\n\n\nmyPrivateBearerAuthApiDataStoreInstance.doApiCallWithBearerToken');
@@ -100,7 +92,7 @@ if (myApiResponse1) {
   });
 }
 
-const myApiResponse2 = myPublicApiStoreInstance.doSimpleHttpBinGet({ a: 1, b: 2, c: 3 })
+const myApiResponse2 = myPublicApiStoreInstance.doSimpleHttpBinGet({ a: 1, b: 2, c: 3 });
 if (myApiResponse2) {
   myApiResponse2.result.then((resp: HttpBinResponse) => {
     console.log('\n\n\nmyPublicApiStoreInstance.doSimpleHttpBinGet');
@@ -111,10 +103,10 @@ if (myApiResponse2) {
 }
 
 const myApiResponse3 = myPublicApiStoreInstance.doSimpleHttpBinPathParamsGet('message_id_123', {
-    aa: 11,
-    bb: 22,
-    cc: 33,
-  })
+  aa: 11,
+  bb: 22,
+  cc: 33,
+});
 if (myApiResponse3) {
   myApiResponse3.result.then((resp: HttpBinResponse) => {
     console.log('\n\n\nmyPublicApiStoreInstance.doSimpleHttpBinPathParamsGet');
