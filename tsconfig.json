@@ -11,12 +11,12 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "isolatedModules": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
-  "include": ["*.ts"]
+  "include": ["src/*.ts"]
 }

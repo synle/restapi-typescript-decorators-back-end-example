@@ -4,9 +4,9 @@
   "description": "Example repo that uses the restapi-typescript-decorators",
   "main": "build/index",
   "scripts": {
-    "build": "rm -rf build/* && ./node_modules/.bin/tsc",
-    "format": "./node_modules/.bin/prettier --config ./.prettierrc --write **/**/**/**/*.{ts,tsx,js,jsx,scss} *.{json,MD}",
-    "test": "npx ts-node test.ts"
+    "build": "rm -rf build/* && tsc",
+    "format": "npx prettier --config ./.prettierrc --write **/**/**/**/*.{ts,tsx,js,jsx,scss} *.{json,MD}",
+    "test": "npx ts-node src/test.ts"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/synle/restapi-typescript-decorators-example#readme",
   "dependencies": {
-    "restapi-typescript-decorators": "^3",
+    "restapi-typescript-decorators": "^4",
     "typescript": "^3.8.3"
   },
   "devDependencies": {

@@ -19,51 +19,6 @@ npm run build
 node build build/test.js
 ```
 
-
-## sample code
-```
-import {
-  RestClient,
-  RestApi,
-  RequestBody,
-  PathParam,
-  QueryParams,
-  CredentialProperty,
-  ApiResponse,
-} from 'restapi-typescript-decorators';
-
-@RestClient({
-  baseUrl: 'https://httpbin.org',
-})
-export class PublicApiDataStore {
-  @RestApi('/post', {
-    method: 'POST',
-  })
-  doSimpleHttpBinPost(@RequestBody _body): any {}
-
-  @RestApi('/get')
-  doSimpleHttpBinGet(@QueryParams _queryParams): any {}
-
-  @RestApi('/anything/{messageId}')
-  doSimpleHttpBinPathParamsGet(
-    @PathParam('messageId') _targetMessageId: string,
-    @QueryParams _queryParams,
-  ): any {}
-}
-
-const myPublicApiStoreInstance = new PublicApiDataStore();
-
-const myApiResponse1 = <ApiResponse>(
-  myPrivateBearerAuthApiDataStoreInstance.doApiCallWithBearerToken()
-);
-myApiResponse1.result.then((resp) => {
-  console.log('\n\n\nmyPrivateBearerAuthApiDataStoreInstance.doApiCallWithBearerToken');
-  console.log('url', myApiResponse1.url);
-  console.log('status', myApiResponse1.status);
-  console.log('resp', resp);
-});
-```
-
 ## sample output
 ```
 > restapi-typescript-decorators-example@2.0.0 test /mnt/d/_git/restapi-typescript-decorators-example
