@@ -8,6 +8,16 @@ import {
   ApiResponse,
 } from 'restapi-typescript-decorators';
 
+export interface HttpBinResponse {
+  args?: object;
+  headers?: object;
+  origin?: string;
+  url?: string;
+  data?: object;
+  json?: string | object;
+  form?: object;
+}
+
 @RestClient({
   baseUrl: 'https://httpbin.org',
 })
@@ -15,16 +25,16 @@ export class PublicApiDataStore {
   @RestApi('/post', {
     method: 'POST',
   })
-  doSimpleHttpBinPost(@RequestBody _body): any {}
+  doSimpleHttpBinPost(@RequestBody _body: any): ApiResponse<HttpBinResponse> {}
 
   @RestApi('/get')
-  doSimpleHttpBinGet(@QueryParams _queryParams): any {}
+  doSimpleHttpBinGet(@QueryParams _queryParam: any): ApiResponse<HttpBinResponse> {}
 
   @RestApi('/anything/{messageId}')
   doSimpleHttpBinPathParamsGet(
     @PathParam('messageId') _targetMessageId: string,
-    @QueryParams _queryParams,
-  ): any {}
+    @QueryParams _queryParams: any,
+  ): ApiResponse<HttpBinResponse> {}
 }
 
 @RestClient({
@@ -42,7 +52,7 @@ export class PrivateBearerAuthApiDataStore {
   @RestApi('/bearer', {
     method: 'GET',
   })
-  doApiCallWithBearerToken(): any {}
+  doApiCallWithBearerToken(): ApiResponse<HttpBinResponse> {}
 }
 
 @RestClient({
@@ -64,7 +74,7 @@ export class PrivateBasicAuthApiDataStore {
   @RestApi('/basic-auth/good_username/good_password', {
     method: 'GET',
   })
-  doApiCallWithBasicUsernameAndPassword(): any {}
+  doApiCallWithBasicUsernameAndPassword(): ApiResponse<HttpBinResponse> {}
 }
 
 // instantiate the data store
@@ -80,58 +90,60 @@ const myPrivateBasicAuthApiDataStoreInstance = new PrivateBasicAuthApiDataStore(
 );
 
 // begin api calls
-const myApiResponse1 = <ApiResponse>(
-  myPrivateBearerAuthApiDataStoreInstance.doApiCallWithBearerToken()
-);
-myApiResponse1.result.then((resp) => {
-  console.log('\n\n\nmyPrivateBearerAuthApiDataStoreInstance.doApiCallWithBearerToken');
-  console.log('url', myApiResponse1.url);
-  console.log('status', myApiResponse1.status);
-  console.log('resp', resp);
-});
+const myApiResponse1 = myPrivateBearerAuthApiDataStoreInstance.doApiCallWithBearerToken()
+if (myApiResponse1) {
+  myApiResponse1.result.then((resp: HttpBinResponse) => {
+    console.log('\n\n\nmyPrivateBearerAuthApiDataStoreInstance.doApiCallWithBearerToken');
+    console.log('url', myApiResponse1.url);
+    console.log('status', myApiResponse1.status);
+    console.log('resp', resp);
+  });
+}
 
-const myApiResponse2 = <ApiResponse>(
-  myPublicApiStoreInstance.doSimpleHttpBinGet({ a: 1, b: 2, c: 3 })
-);
-myApiResponse2.result.then((resp) => {
-  console.log('\n\n\nmyPublicApiStoreInstance.doSimpleHttpBinGet');
-  console.log('url', myApiResponse2.url);
-  console.log('status', myApiResponse2.status);
-  console.log('resp', resp);
-});
+const myApiResponse2 = myPublicApiStoreInstance.doSimpleHttpBinGet({ a: 1, b: 2, c: 3 })
+if (myApiResponse2) {
+  myApiResponse2.result.then((resp: HttpBinResponse) => {
+    console.log('\n\n\nmyPublicApiStoreInstance.doSimpleHttpBinGet');
+    console.log('url', myApiResponse2.url);
+    console.log('status', myApiResponse2.status);
+    console.log('resp', resp);
+  });
+}
 
-const myApiResponse3 = <ApiResponse>(
-  myPublicApiStoreInstance.doSimpleHttpBinPathParamsGet('message_id_123', {
+const myApiResponse3 = myPublicApiStoreInstance.doSimpleHttpBinPathParamsGet('message_id_123', {
     aa: 11,
     bb: 22,
     cc: 33,
   })
-);
-myApiResponse3.result.then((resp) => {
-  console.log('\n\n\nmyPublicApiStoreInstance.doSimpleHttpBinPathParamsGet');
-  console.log('url', myApiResponse3.url);
-  console.log('status', myApiResponse3.status);
-  console.log('resp', resp);
-});
+if (myApiResponse3) {
+  myApiResponse3.result.then((resp: HttpBinResponse) => {
+    console.log('\n\n\nmyPublicApiStoreInstance.doSimpleHttpBinPathParamsGet');
+    console.log('url', myApiResponse3.url);
+    console.log('status', myApiResponse3.status);
+    console.log('resp', resp);
+  });
+}
 
-const myApiResponse4 = <ApiResponse>myPublicApiStoreInstance.doSimpleHttpBinPost({
+const myApiResponse4 = myPublicApiStoreInstance.doSimpleHttpBinPost({
   d: 4,
   e: 5,
   f: 6,
 });
-myApiResponse4.result.then((resp) => {
-  console.log('\n\n\nmyPublicApiStoreInstance.doSimpleHttpBinPost');
-  console.log('url', myApiResponse4.url);
-  console.log('status', myApiResponse4.status);
-  console.log('resp', resp);
-});
+if (myApiResponse4) {
+  myApiResponse4.result.then((resp: HttpBinResponse) => {
+    console.log('\n\n\nmyPublicApiStoreInstance.doSimpleHttpBinPost');
+    console.log('url', myApiResponse4.url);
+    console.log('status', myApiResponse4.status);
+    console.log('resp', resp);
+  });
+}
 
-const myApiResponse5 = <ApiResponse>(
-  myPrivateBasicAuthApiDataStoreInstance.doApiCallWithBasicUsernameAndPassword()
-);
-myApiResponse5.result.then((resp) => {
-  console.log('\n\nmyPrivateBasicAuthApiDataStoreInstance.doApiCallWithBasicUsernameAndPassword');
-  console.log('url', myApiResponse5.url);
-  console.log('status', myApiResponse5.status);
-  console.log('resp', resp);
-});
+const myApiResponse5 = myPrivateBasicAuthApiDataStoreInstance.doApiCallWithBasicUsernameAndPassword();
+if (myApiResponse5) {
+  myApiResponse5.result.then((resp: HttpBinResponse) => {
+    console.log('\n\nmyPrivateBasicAuthApiDataStoreInstance.doApiCallWithBasicUsernameAndPassword');
+    console.log('url', myApiResponse5.url);
+    console.log('status', myApiResponse5.status);
+    console.log('resp', resp);
+  });
+}
