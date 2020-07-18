@@ -25,4 +25,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: cat node_modules/restapi-typescript-decorators/package.json
+    - run: npm run build
     - run: npm test
