@@ -5,7 +5,7 @@
   "main": "build/index",
   "scripts": {
     "build": "rm -rf build/* && tsc",
-    "format": "npx prettier --config ./.prettierrc --write **/**/**/**/*.{ts,tsx,js,jsx,scss} *.{json,MD}",
+    "format": "prettier --config ./.prettierrc --write **/**/**/**/*.{ts,tsx,js,jsx,scss} *.{json,MD}",
     "test": "npx ts-node src/test.ts"
   },
   "repository": {
@@ -25,11 +25,11 @@
   },
   "homepage": "https://github.com/synle/restapi-typescript-decorators-example#readme",
   "dependencies": {
-    "restapi-typescript-decorators": "^4",
-    "typescript": "^3.8.3"
+    "restapi-typescript-decorators": "^5"
   },
   "devDependencies": {
-    "prettier": "1.19.1"
+    "prettier": "1.19.1",
+    "typescript": "^3.8.3"
   },
   "peerDependencies": {}
 }
