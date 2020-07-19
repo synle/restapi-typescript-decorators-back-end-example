@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/synle/restapi-typescript-decorators-example#readme",
   "dependencies": {
-    "restapi-typescript-decorators": "^5"
+    "restapi-typescript-decorators": "^6"
   },
   "devDependencies": {
     "prettier": "1.19.1",
