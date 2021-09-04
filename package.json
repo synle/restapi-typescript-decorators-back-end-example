@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node mock-server.js",
     "build": "rm -rf build/* && tsc",
-    "format": "prettier --config ./.prettierrc --write **/**/**/**/*.{ts,tsx,js,jsx,scss} *.{json,MD}",
+    "format": "npx prettier --config ./.prettierrc --write **/**/**/**/*.{ts,tsx,js,jsx,scss} *.{json,MD}",
     "test": "npx ts-node src/test.ts"
   },
   "repository": {
@@ -27,11 +27,10 @@
   "homepage": "https://github.com/synle/restapi-typescript-decorators-example#readme",
   "dependencies": {
     "restify": "^8.5.1",
-    "restapi-typescript-decorators": "^6"
+    "restapi-typescript-decorators": "^7"
   },
   "devDependencies": {
-    "prettier": "1.19.1",
-    "typescript": "^3.8.3"
+    "typescript": "^4"
   },
   "peerDependencies": {}
 }
